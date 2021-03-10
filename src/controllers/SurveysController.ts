@@ -21,7 +21,7 @@ class SurveysController {
   async show(req: Request, res: Response) {
     const surveysRepository = getCustomRepository(SurveysRepository);
 
-    const all = surveysRepository.find();
+    const all = await surveysRepository.findOneOrFail();
 
     return res.json(all);
   }
