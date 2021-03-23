@@ -8,10 +8,6 @@ describe("Users", () => {
     await connection.runMigrations();
   });
 
-  // beforeEach(async () => {
-
-  // })
-
   it("should be able to create a new user", async () => {
     const response = await request(app).post("/users").send({
       email: "user@example.com",
@@ -21,7 +17,7 @@ describe("Users", () => {
     expect(response.status).toBe(201);
   });
 
-  it("shoul be return 400 if user alredy exists", async () => {
+  it("should be return 400 if email user alredy exists", async () => {
     const response = await request(app).post("/users").send({
       email: "user@example.com",
       name: "User Example",
